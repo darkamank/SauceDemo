@@ -47,10 +47,12 @@ public class SauceDemo extends BaseTest{
         driver.findElement(By.xpath("//input[@id='login-button']")).click();
         boolean idDisplayed = driver.findElement(By.xpath("//a[@class='shopping_cart_link']")).isDisplayed();
         Assert.assertTrue(idDisplayed,"You didn't authorize");
-        String addedItem = driver.findElement(By.xpath("//div[contains(text(),'Backpack')]")).getText();
-        String addedItemCost = driver.findElement(By.xpath("//div[contains(text(),'29.99')]")).getText();
-        System.out.println(addedItemCost);
-        driver.findElement(By.id("add-to-cart-sauce-labs-backpack")).click();
+      String addedItem = driver.findElement(By.xpath("//div[contains(text(),'Light')]")).getText();
+    String addedItemCost = driver.findElement(By.xpath("//*[@id=\"inventory_container\"]/div/div[2]/div[2]/div[2]/div")).getText();
+      System.out.println(addedItemCost);
+
+        driver.findElement(By.id("add-to-cart-sauce-labs-bike-light")).click();
+        driver.findElement(By.className("shopping_cart_link")).click();
         String itemName = driver.findElement(By.className("inventory_item_name")).getText();
         String itemCost = driver.findElement(By.className("inventory_item_price")).getText();
         Assert.assertEquals(itemCost,addedItemCost,"Item cost doesn't match");

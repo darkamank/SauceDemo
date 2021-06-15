@@ -6,6 +6,9 @@ import org.testng.annotations.BeforeTest;
 import java.util.concurrent.TimeUnit;
 
 public abstract class BaseTest {
+    public static final String NAME = "standard_user";
+    public static final String PASSWORD = "secret_sauce";
+
 WebDriver driver;
 
 @BeforeTest
