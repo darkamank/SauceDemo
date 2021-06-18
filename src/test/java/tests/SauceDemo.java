@@ -1,9 +1,11 @@
+package tests;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class SauceDemo extends BaseTest{
+public class SauceDemo extends BaseTest {
     @Test
     public void lonIn (){
         driver.get("https://www.saucedemo.com/");
@@ -48,8 +50,7 @@ public class SauceDemo extends BaseTest{
         boolean idDisplayed = driver.findElement(By.xpath("//a[@class='shopping_cart_link']")).isDisplayed();
         Assert.assertTrue(idDisplayed,"You didn't authorize");
       String addedItem = driver.findElement(By.xpath("//div[contains(text(),'Light')]")).getText();
-    String addedItemCost = driver.findElement(By.xpath("//*[@id=\"inventory_container\"]/div/div[2]/div[2]/div[2]/div")).getText();
-      System.out.println(addedItemCost);
+    String addedItemCost = driver.findElement(By.xpath("//div[contains(text(),'$') and text()='9.99']")).getText();
 
         driver.findElement(By.id("add-to-cart-sauce-labs-bike-light")).click();
         driver.findElement(By.className("shopping_cart_link")).click();

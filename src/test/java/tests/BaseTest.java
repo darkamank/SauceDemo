@@ -1,3 +1,5 @@
+package tests;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
@@ -8,8 +10,7 @@ import java.util.concurrent.TimeUnit;
 public abstract class BaseTest {
     public static final String NAME = "standard_user";
     public static final String PASSWORD = "secret_sauce";
-
-WebDriver driver;
+    public WebDriver driver;
 
 @BeforeTest
 public void setUP (){
