@@ -24,4 +24,8 @@ public class ProductsPage extends BasePage{
     public String qualityItemOnCart(){
        return driver.findElement(QUALITY_ITEMS).getText();
     }
+    public CartPage openCartPage(){
+        driver.findElement(QUALITY_ITEMS).click();
+    return new CartPage(driver);
+    }
 }
