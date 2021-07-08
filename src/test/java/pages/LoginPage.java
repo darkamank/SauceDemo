@@ -35,13 +35,15 @@ public LoginPage(WebDriver driver){
     PageFactory.initElements(driver,this);
 }
 
-    public void openSite(String url){
+    public LoginPage openSite(String url){
         driver.get(url);
+        return new LoginPage(driver);
 }
-    public void LogIn(String userName, String password){
+    public LoginPage LogIn(String userName, String password){
         userNameField.sendKeys(userName);
         passwordField.sendKeys(password);
         loginButton.click();
+        return new LoginPage(driver);
 }
 
     public String getErrorMassage(){
@@ -59,9 +61,10 @@ public LoginPage(WebDriver driver){
         loginButton.click();
         return errorMessage.getText();
     }
-    public void logout(){
+    public LoginPage logout(){
     burgerMenu.click();
     logOut.click();
+    return new LoginPage(driver);
     }
 
 

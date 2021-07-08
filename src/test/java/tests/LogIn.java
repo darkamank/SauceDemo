@@ -28,17 +28,17 @@ public class LogIn extends BaseTest {
     }
     @Test
     public void passwordShouldBeRequired(){
-        loginPage.openSite("https://www.saucedemo.com/");
-        loginPage.LogIn("standard_user","");
+        loginPage.openSite("https://www.saucedemo.com/").
+                LogIn("standard_user","");
         String error = loginPage.getErrorMassage();
         String errorMessage = loginPage.getErrorMessageIfPasswordIsEmpty();
         Assert.assertEquals(error,errorMessage,"Error message isn't correct");
     }
     @Test
     public void logout(){
-        loginPage.openSite("https://www.saucedemo.com");
-        loginPage.LogIn(NAME,PASSWORD);
-        loginPage.logout();
+        loginPage.openSite("https://www.saucedemo.com")
+                .LogIn(NAME,PASSWORD)
+                .logout();
         boolean isLoginButtonIsDisplayed = driver.findElement(By.xpath("//input[@name='login-button']")).isDisplayed();
         Assert.assertTrue(isLoginButtonIsDisplayed,"You didn't Logout");
     }
