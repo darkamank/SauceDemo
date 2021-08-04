@@ -3,6 +3,7 @@ package tests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.json.JsonOutput;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -30,6 +31,7 @@ public class ProductsTest extends BaseTest {
         String qualityItems = productsPage.qualityItemOnCart();
         Assert.assertEquals(qualityItems,"2","Quality Items Displayed incorrectly");
         productsPage.openCartPage();
+        wait.until(ExpectedConditions.urlToBe("https://www.saucedemo.com/cart.html"));
         cartPage.findAddedItem("Sauce Labs Backpack");
         cartPage.findAddedItem("Sauce Labs Onesie");
     }
@@ -37,10 +39,12 @@ public class ProductsTest extends BaseTest {
     public void selectProductSort(){
         loginPage.openSite("https://www.saucedemo.com/");
         loginPage.LogIn(NAME,PASSWORD);
+        List<WebElement> elementsBeforeSort = driver.findElements(By.xpath("//div[@class='inventory_item_name']"));
+        String lastItemBeforeSort = elementsBeforeSort.get(5).getText();
         productsPage.setSelect("za");
-        List<WebElement> elements = driver.findElements(By.xpath("//div[@class='inventory_item_name']"));
-        String firstItem = elements.get(0).getText();
-        Assert.assertEquals(firstItem,"Test.allTheThings() T-Shirt (Red)","Sorting didn't work");
+        List<WebElement> elementsAfterSort = driver.findElements(By.xpath("//div[@class='inventory_item_name']"));
+        String firstItemAfterSort = elementsAfterSort.get(0).getText();
+        Assert.assertEquals(firstItemAfterSort,lastItemBeforeSort,"Sorting didn't work");
     }
     @Test
     public void checkIfResetWork(){
