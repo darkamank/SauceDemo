@@ -10,6 +10,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import pages.*;
+import tests.LogIn;
 
 import java.util.concurrent.TimeUnit;
 
